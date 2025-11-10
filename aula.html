@@ -1,25 +1,114 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 id="titulo">Olá mundo</h1>
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-    <script>
-        //PARÂMETRO= (a+b)
-        //CONCEITO DE FUNÇÃO= calculo(a+b)
-        //VARIAVEL= uma caixa que guarda informações no caso 'titulo'
-        //Insira seu código JavaScript
-        const titulo = document.getElementById('titulo')
-        const elemento = document.getElementById('elemento')
-       
-       
-        console.log(titulo.textContent)
-        console.log(elemento.textContent)
+const WhatsAppLayout = () => {
+  return (
+    <View style={styles.container}>
+      {/* Barra superior */}
+      <View style={styles.header}>
+        <Text style={styles.backArrow}>←</Text>
+        <Image
+          source={{ uri: 'https://via.placeholder.com/40x40' }} // Placeholder para foto de perfil
+          style={styles.profileImage}
+        />
+        <Text style={styles.name}>Benjamin Arrola</Text>
+      </View>
 
-    </script>
-</body>
-</html>
+      {/* Conteúdo da conversa */}
+      <View style={styles.chatContainer}>
+        {/* Primeira mensagem recebida */}
+        <View style={styles.receivedMessage}>
+          <Text style={styles.messageText}>Olá! Como você está?</Text>
+        </View>
+
+        {/* Segunda mensagem recebida */}
+        <View style={styles.receivedMessage}>
+          <Text style={styles.messageText}>Vamos marcar um encontro?</Text>
+        </View>
+
+        {/* Primeira mensagem enviada */}
+        <View style={styles.sentMessage}>
+          <Text style={styles.messageText}>Oi! Estou bem, obrigado.</Text>
+        </View>
+
+        {/* Segunda mensagem enviada */}
+        <View style={styles.sentMessage}>
+          <Text style={styles.messageText}>Claro, que tal amanhã?</Text>
+        </View>
+
+        {/* Imagem recebida */}
+        <View style={styles.receivedImage}>
+          <Image
+            source={{ uri: 'https://via.placeholder.com/200x150' }} // Imagem qualquer (placeholder)
+            style={styles.image}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#e5ddd5', // Cor de fundo típica do WhatsApp
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#075e54', // Cor verde do WhatsApp
+    height: 60,
+  },
+  backArrow: {
+    fontSize: 24,
+    color: '#ffffff',
+    marginRight: 10,
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20, // Para torná-la circular
+    marginRight: 10,
+  },
+  name: {
+    fontSize: 18,
+    color: '#ffffff',
+    fontWeight: 'bold',
+  },
+  chatContainer: {
+    flex: 1,
+    padding: 10,
+  },
+  receivedMessage: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#ffffff',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+    maxWidth: '70%',
+  },
+  sentMessage: {
+    alignSelf: 'flex-end',
+    backgroundColor: '#dcf8c6',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+    maxWidth: '70%',
+  },
+  messageText: {
+    fontSize: 16,
+    color: '#000000',
+  },
+  receivedImage: {
+    alignSelf: 'flex-start',
+    marginVertical: 5,
+  },
+  image: {
+    width: 200,
+    height: 150,
+    borderRadius: 10,
+  },
+});
+
+export default WhatsAppLayout;
